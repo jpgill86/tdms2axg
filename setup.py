@@ -10,7 +10,7 @@ with open('requirements.txt', 'r') as f:
 
 setup(
     name = 'tdms2axg',
-    version = '0.1.0',
+    version = '0.1.1',
     description = 'A simple script for converting National Instruments TDMS files to AxoGraph files',
     packages = ['tdms2axg'],
     install_requires = install_requires,
