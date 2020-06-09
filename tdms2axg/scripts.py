@@ -23,7 +23,7 @@ def tdms2axg(filename, force=False, verbose=True):
 
     output_filename = '.'.join(filename.split('.')[:-1]) + '.axgx'
     if os.path.isfile(output_filename) and not force:
-        raise FileExistsError('error: output file exists, use force flag to overwrite: ' + output_filename)
+        raise OSError('error: output file exists, use force flag to overwrite: ' + output_filename)
 
     # read the TDMS file
     tdms_file = nptdms.TdmsFile.read(filename)
