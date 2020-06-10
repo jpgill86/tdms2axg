@@ -1,8 +1,7 @@
 tdms2axg
 ========
 
-*A simple script for converting National Instruments TDMS files to AxoGraph
-files*
+*A simple script for converting LabVIEW TDMS files to AxoGraph files*
 
 |PyPI badge| |GitHub badge|
 
@@ -21,10 +20,10 @@ command line::
 
     usage: tdms2axg [-h] [-f] [-q] file
 
-    A simple script for converting National Instruments TDMS files to AxoGraph
-    files. The AxoGraph (AXGX) file is saved with the same name and in the same
-    directory as the TDMS file. By default, an existing AxoGraph file will not be
-    overwritten; use --force to overwrite.
+    A simple script for converting LabVIEW TDMS files to AxoGraph files. The
+    AxoGraph (AXGX) file is saved with the same name and in the same directory as
+    the TDMS file. By default, an existing AxoGraph file will not be overwritten;
+    use --force to overwrite it.
 
     positional arguments:
       file         the path to a TDMS file
