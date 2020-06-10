@@ -7,6 +7,7 @@ import sys
 import argparse
 
 import numpy as np
+import quantities as pq
 import nptdms
 import axographio
 
@@ -42,8 +43,36 @@ def tdms2axg(filename, force=False, verbose=True):
     names = ['Time (s)']
     columns = [axographio.aslinearsequence(channels[0].time_track())]  # assume time is same for all columns
     for c in channels:
-        names += [c.name]
+
+        # try to determine channel units
+        unit_string = None
+        if 'unit_string' in c.properties:
+            u = c.properties['unit_string']
+            try:
+                # test whether the unit is recognizable
+                q = pq.Quantity(1, u)
+                unit_string = u
+            except LookupError:
+                try:
+                    # try assuming its a simple compound unit (e.g., Nm = N*m)
+                    u = '*'.join(u)
+                    q = pq.Quantity(1, u)
+                    unit_string = u
+                except LookupError:
+                    # unit string cannot be interpreted
+                    pass
+
+        if unit_string:
+            name = c.name + ' (' + unit_string + ')'
+        else:
+            name = c.name
+
+        names += [name]
         columns += [c[:]]
+
+    if verbose:
+        print('Channel names:', names[1:])
+        print()
 
     # write the AxoGraph file
     if verbose:
