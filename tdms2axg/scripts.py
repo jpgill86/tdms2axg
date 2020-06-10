@@ -53,6 +53,8 @@ def tdms2axg(filename, force=False, verbose=True):
     if verbose:
         print('Done!')
 
+    return output_filename
+
 
 def parse_args(argv):
 
