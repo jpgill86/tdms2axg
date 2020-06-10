@@ -10,7 +10,7 @@ with open('requirements.txt', 'r') as f:
 
 setup(
     name = 'tdms2axg',
-    version = '0.1.2',
+    version = '0.2.0',
     description = 'A simple script for converting LabVIEW TDMS files to AxoGraph files',
     packages = ['tdms2axg'],
     install_requires = install_requires,
