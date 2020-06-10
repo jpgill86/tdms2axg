@@ -40,7 +40,7 @@ def tdms2axg(filename, force=False, verbose=True):
 
     # collect the data for writing to AxoGraph format
     names = ['Time (s)']
-    columns = [channels[0].time_track()]  # assume time is same for all columns
+    columns = [axographio.aslinearsequence(channels[0].time_track())]  # assume time is same for all columns
     for c in channels:
         names += [c.name]
         columns += [c[:]]
